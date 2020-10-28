@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="static/estil.css" type="text/css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <img class="img__img" style = "visibility:hidden;" src="static/errado.png" />
+        </div>
+        <div style="font-family:verdana; padding-top:80px;">
+        <div>
+            <h1>JOGO NÚMEROS</h1>
+        </div>
+        <div>
+            <h3>Tente preencher os quadros com uma sequência de 1 a 8</h3>
+        </div>
+        <div>
+            <h3>Cada número não deve ter em seu entorno seu valor <span>&#177;</span> 1</h3>
+            <h2 class="texto" style="color:rgb(175, 137, 211);">EXEMPLO</h2>
+        </div>
+        </div>
+        <p></p>
+
+        <div class = 'jogo_corpo'>
+        <form method = 'POST' name = 'resp' action="/resposta" onSubmit = 'return validar()'>
+            <div><input type = "number" min="1" max="8" step="1" class = 'quadrado' name = 'valores'></div>
+            <div><span><input type = "number" min="1" max="8" step="1" class = 'quadrado' name = 'valores'></span>
+                <span><input type = "number" min="1" max="8" step="1" class = 'quadrado' name = 'valores'></span>
+                <span><input type = "number" min="1" max="8" step="1" class = 'quadrado' name = 'valores'></span></div>
+            <div><span><input type = "number" min="1" max="8" step="1" class = 'quadrado' name = 'valores'></span>
+                <span><input type = "number" min="1" max="8" step="1" class = 'quadrado' name = 'valores'></span>
+                <span><input type = "number" min="1" max="8" step="1" class = 'quadrado' name = 'valores'></span></div>
+            <div><input type = "number" min="1" max="8" step="1" class = 'quadrado' name = 'valores'></div>
+            <p></p>
+            <input type="submit" style = 'height:50px; width:100px;font-size: 30;text-align: center;'>
+        </form>
+        </div>
+        <div hidden>{{ numbe }}</div>
+    </body>
+<script type="text/javascript">
+
+    document.querySelectorAll(".texto").forEach(item => {
+        
+        item.addEventListener("mouseout", event => { 
+            document.querySelector(".img__img").style.visibility="hidden"
+        });
+        item.addEventListener("mouseover", event => { 
+            document.querySelector(".img__img").style.visibility="visible"
+            }); 
+});
+    function validar(){
+        var valors = document.getElementsByClassName('quadrado');
+        var valores = [valors[0].value, valors[1].value, valors[2].value, 
+        valors[3].value, valors[4].value, valors[5].value, valors[6].value, valors[7].value];
+        var cresc = valores.sort();
+
+        for (i=0;i<cresc.length;i++) {
+            if (cresc[i] == cresc[i + 1]) {
+                alert('Prenche os campos de 1 a 8 sem repetir os números')
+                return false
+            }
+            else {
+                continue
+            };
+        };
+    };
+
+    let num = '{{ numbe }}';
+
+    if (num == '1'){
+        alert("Perto")
+    }
+    else if (num == '2'){
+        alert("Mediano")
+    }
+    else if (num == '3') {
+        alert("Longe")
+    }
+    else {
+        false
+    };
+    
+
+</script>
+</html>

@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+}
+
+.img__img {
+    position: absolute;
+    right: 10%;
+}
+
+.quadrado {
+
+    height:60px;
+    width: 60px;
+    font-size: 30;
+    text-align: center;
+    margin: 5px;
+    border: none;
+    background:#ffc09b;
+    border-radius: 10px;
+    color:#563636;
+
+}
+
+.jogo_corpo{
+    padding-top: 100px;
+    background:#a5a5a5;
+    padding-bottom: 30px;
+    margin-left:35%;
+    margin-right:35%;
+    border-radius: 10px;
+}
